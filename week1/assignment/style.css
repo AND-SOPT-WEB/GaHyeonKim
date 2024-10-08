@@ -1,0 +1,38 @@
+body {
+    background-color: black;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width : 100%;
+    padding : 8px 0;
+    color: white;
+    z-index: 100;
+
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.normalBtn {
+    padding: 10px;
+}
+
+.logo {
+    width: 100px;
+    padding: 10px 20px;
+}
