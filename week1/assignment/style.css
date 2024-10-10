@@ -192,12 +192,9 @@ body {
     column-gap: 18px;
     padding: 0;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* x축으로 항상 스냅 ! */
+
 }
 
-.scroll-view-item {
-    scroll-snap-align: start;
-}
 
 .scroll-view-item img {
     width: 270px;
