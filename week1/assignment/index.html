@@ -4,100 +4,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css" />
     <link rel="stylesheet" href="style.css" />
     <title>SOPT</title>
 </head>
 
 <body>
-    <div class="header">
+    <header class="header">
         <div class="header-left">
             <img src="images/sopt_logo.png" alt="sopt_logo" class="logo" />
-            <div class="normalBtn">HOME</div>
-            <div class="normalBtn">AND</div>
-            <div class="normalBtn">SOPT</div>
-            <div class="normalBtn">WEB</div>
+            <nav>
+                <ul>
+                    <li class="normalBtn">HOME</li>
+                    <li class="normalBtn">AND</li>
+                    <li class="normalBtn">SOPT</li>
+                    <li class="normalBtn">WEB</li>
+                </ul>
+            </nav>
         </div>
-        <div class="header-right">
-            <img src="images/search.svg" alt="검색" class="normalBtn" />
-            <img src="images/notification.svg" alt="알림" class="normalBtn" />
-            <img src="images/person.svg" alt="마이페이지" class="normalBtn" />
-        </div>
-    </div>
-    <div class="home-banner">
-        <img src="images/banner_bg.jpg" alt="웨비단체사진" class="banner-bg" />
-        <div class="bottom-box">
-            <span class="comment">AND SOPT Wave Web</span>
-            <a class="hover-btn" href="https://www.sopt.org/" target="_blank">
-                <img src="images/external.svg" alt="바로가기" />
-                <span>바로가기</span>
-            </a>
-        </div>
-    </div>
-    <div class="container">
-        <span class="title">잘먹었습니다 .. 🥣</span>
-        <div class="infinite-slide">
-            <div class="infinite-slide-forward">
-                <div class="infinite-slide-item" style="background-image: url(images/banner1.jpg);"></div>
-                <div class="infinite-slide-item" style="background-image: url(images/banner2.jpg);"></div>
-                <div class="infinite-slide-item" style="background-image: url(images/banner3.jpg);"></div>
-                <div class="infinite-slide-item" style="background-image: url(images/banner4.jpg);"></div>
-                <div class="infinite-slide-item" style="background-image: url(images/banner5.jpg);"></div>
-            </div>
-            <div class="infinite-slide-back">
-                <div class="infinite-slide-item" style="background-image: url(images/banner1.jpg);"></div>
-                <div class="infinite-slide-item" style="background-image: url(images/banner2.jpg);"></div>
-                <div class="infinite-slide-item" style="background-image: url(images/banner3.jpg);"></div>
-                <div class="infinite-slide-item" style="background-image: url(images/banner4.jpg);"></div>
-                <div class="infinite-slide-item" style="background-image: url(images/banner5.jpg);"></div>
-            </div>
-        </div>
-    </div>
+        <ul class="header-right">
+            <li><img src="images/search.svg" alt="검색" class="normalBtn" /></li>
+            <li><img src="images/notification.svg" alt="알림" class="normalBtn" /></li>
+            <li><img src="images/person.svg" alt="마이페이지" class="normalBtn" /></li>
+        </ul>
+    </header>
 
-    <div class="scroll-container">
-        <span class="title">한번 더 보세요 🍥</span>
-        <div class="scroll-view">
-            <a href="#first" class="scroll-btn">
-                <i class="fa-solid fa-angle-left" style="color: #ffffff;"></i>
-            </a>
-            <ul class="scroll-view-list">
-                <li class="scroll-view-item" id="first">
-                    <img src="images/banner1.jpg" alt="이미지1">
-                </li>
-                <li class="scroll-view-item">
-                    <img src="images/banner2.jpg" alt="이미지2">
-                </li>
-                <li class="scroll-view-item">
-                    <img src="images/banner3.jpg" alt="이미지3">
-                </li>
-                <li class="scroll-view-item">
-                    <img src="images/banner4.jpg" alt="이미지4">
-                </li>
-                <li class="scroll-view-item">
-                    <img src="images/banner5.jpg" alt="이미지5">
-                </li>
-                <li class="scroll-view-item">
-                    <img src="images/banner6.jpg" alt="이미지6">
-                </li>
-                <li class="scroll-view-item">
-                    <img src="images/banner7.jpg" alt="이미지7">
-                </li>
-                <li class="scroll-view-item" id="last">
-                    <img src="images/banner8.jpg" alt="">
-                </li>
-            </ul>
-            <a href="#last" class="scroll-btn">
-                <i class="fa-solid fa-angle-left fa-flip-horizontal" style="color: #ffffff;"></i>
-            </a>
-        </div>
-    </div>
+    <main>
+        <section class="home-banner">
+            <img src="images/banner_bg.jpg" alt="웨비단체사진" class="banner-bg" />
+            <div class="bottom-box">
+                <span class="comment">AND SOPT Wave Web</span>
+                <a class="hover-btn" href="https://www.sopt.org/" target="_blank">
+                    <img src="images/external.svg" alt="바로가기" />
+                    <span>바로가기</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="container">
+            <h3 class="title">잘먹었습니다 .. 🥣</h3>
+            <div class="infinite-slide">
+                <div class="infinite-slide-forward">
+                    <img class="infinite-slide-item" src="images/banner1.jpg" alt="배너 1">
+                    <img class="infinite-slide-item" src="images/banner2.jpg" alt="배너 2">
+                    <img class="infinite-slide-item" src="images/banner3.jpg" alt="배너 3">
+                    <img class="infinite-slide-item" src="images/banner4.jpg" alt="배너 4">
+                    <img class="infinite-slide-item" src="images/banner5.jpg" alt="배너 5">
+                </div>
+                <div class="infinite-slide-back">
+                    <img class="infinite-slide-item" src="images/banner1.jpg" alt="배너 1">
+                    <img class="infinite-slide-item" src="images/banner2.jpg" alt="배너 2">
+                    <img class="infinite-slide-item" src="images/banner3.jpg" alt="배너 3">
+                    <img class="infinite-slide-item" src="images/banner4.jpg" alt="배너 4">
+                    <img class="infinite-slide-item" src="images/banner5.jpg" alt="배너 5">
+                </div>
+            </div>
+        </section>
+        
+
+        <section class="scroll-container">
+            <h3 class="title">한번 더 보세요 🍥</h3>
+            <div class="scroll-view">
+                <a href="#first" class="scroll-btn">
+                    <i class="fa-solid fa-angle-left" style="color: #ffffff;"></i>
+                </a>
+                <ul class="scroll-view-list">
+                    <li class="scroll-view-item" id="first">
+                        <img src="images/banner1.jpg" alt="이미지1">
+                    </li>
+                    <li class="scroll-view-item">
+                        <img src="images/banner2.jpg" alt="이미지2">
+                    </li>
+                    <li class="scroll-view-item">
+                        <img src="images/banner3.jpg" alt="이미지3">
+                    </li>
+                    <li class="scroll-view-item">
+                        <img src="images/banner4.jpg" alt="이미지4">
+                    </li>
+                    <li class="scroll-view-item">
+                        <img src="images/banner5.jpg" alt="이미지5">
+                    </li>
+                    <li class="scroll-view-item">
+                        <img src="images/banner6.jpg" alt="이미지6">
+                    </li>
+                    <li class="scroll-view-item">
+                        <img src="images/banner7.jpg" alt="이미지7">
+                    </li>
+                    <li class="scroll-view-item" id="last">
+                        <img src="images/banner8.jpg" alt="이미지8">
+                    </li>
+                </ul>
+                <a href="#last" class="scroll-btn">
+                    <i class="fa-solid fa-angle-left fa-flip-horizontal" style="color: #ffffff;"></i>
+                </a>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
