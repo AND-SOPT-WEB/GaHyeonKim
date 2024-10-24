@@ -1,0 +1,21 @@
+body {
+    background-color: #bfdeff;
+}
+
+header {
+    background-color: #6eb4ff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+
+    & i { font-size : 1.25rem; }
+
+    & h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    & h3 { font-size: 1rem; }
+}
