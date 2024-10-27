@@ -30,7 +30,7 @@
             </div>
 
             <div class="filter half">
-                <label for="github">Github</label>
+                <label for="github">GitHub</label>
                 <input id="github" type="text" placeholder="Github ID를 입력하세요" />
             </div>
 
@@ -62,12 +62,34 @@
                 <input id="week2Group" type="number" placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
             </div>
             <div class="filter full">
-                <div class="buttons">
+                <div class="filter-btns">
                     <button class="reset-btn">초기화</button>
                     <button class="search-btn">검색</button>
                 </div>
             </div>            
         </section>
+
+        <section class="member-list-container">
+            <div class="member-list-btns">
+              <button class="delete-btn">선택삭제</button>
+              <button class="add-btn">추가</button>
+            </div>
+            <table>
+                <thead>
+                  <tr>
+                    <th scope="col"><input type="checkbox" id="check-all-btn" /></th>
+                    <th>이름</th>
+                    <th>영문이름</th>
+                    <th>GitHub</th>
+                    <th>성별</th>
+                    <th>역할</th>
+                    <th>1주차 금잔디</th>
+                    <th>2주차 금잔디</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+          </section>
     </main>
 </body>
 
