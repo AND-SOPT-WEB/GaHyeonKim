@@ -132,8 +132,8 @@ main {
 
 table {
     width: 100%;
-    margin-top: 0.8rem;
-    border: 1px solid #c6e1ff;
+    margin: 0.8rem 0 8rem 0;
+    border: 1px solid #C5C5C5;
 }
 
 thead {
@@ -147,4 +147,14 @@ td {
     vertical-align: middle;
     text-align: center;
     font-size: 1rem;
+    border-bottom: 1px solid #C5C5C5;
+    border-right: 1px solid #C5C5C5;
+}
+
+tbody {
+    background-color: white;
+}
+
+td:not(:last-child) {
+    border-right: 1px solid #C5C5C5;
 }
