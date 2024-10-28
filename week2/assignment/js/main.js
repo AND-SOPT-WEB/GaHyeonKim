@@ -2,6 +2,7 @@ import members from "./data.js";
 import { renderDatas } from "./render.js";
 import { filterDatas, resetDatas } from "./filter.js";
 import { deleteMember } from "./delete.js";
+import { addMember } from "./add.js";
 
 const searchBtn = document.querySelector(".search-btn");
 const resetBtn = document.querySelector(".reset-btn");
@@ -48,6 +49,8 @@ deleteBtn.addEventListener("click", () => {
 // 모달
 // 모달 열고 닫기
 const modalCloseBtn = document.getElementById("modal-close-btn");
+const submitAddMember = document.querySelector(".modal-form");
+
 
 addBtn.addEventListener("click", () => {
     modal.showModal();
@@ -59,4 +62,16 @@ modalCloseBtn.addEventListener("click", () => {
 
 modal.addEventListener("click", (e) => {
     if (e.target === e.currentTarget) modal.close();
+  });
+
+submitAddMember.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newMember = addMember(membersData);
+
+    if (newMember) {
+      membersData.push(newMember);
+      localStorage.setItem("membersData", JSON.stringify(membersData));
+      renderDatas(membersData);
+      modal.close();
+    }
   });
