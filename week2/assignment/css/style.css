@@ -5,23 +5,25 @@ body {
 header {
     background-color: #71b6ff;
     color: white;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-
-    justify-content: space-between;
     padding: 1.5rem;
 
     & i {
         font-size: 1.25rem;
+        justify-self: start;
     }
 
     & h1 {
         font-size: 1.5rem;
         font-weight: bold;
+        justify-self: center;
     }
 
     & h3 {
         font-size: 1rem;
+        justify-self: end;
     }
 }
 
