@@ -73,5 +73,7 @@ submitAddMember.addEventListener("submit", (e) => {
       localStorage.setItem("membersData", JSON.stringify(membersData));
       renderDatas(membersData);
       modal.close();
+
+      submitAddMember.reset(); // 폼 리셋
     }
   });
