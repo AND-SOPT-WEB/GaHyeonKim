@@ -19,9 +19,11 @@ export const addMember = (membersData) => {
       alert("빈 곳 없이 입력해주세요.");
       return;
     }
+
+    const maxId = membersData.reduce((max, member) => Math.max(max, member.id), 0);
   
     const newMemberInfo = {
-      id: membersData.length + 1,
+      id: maxId + 1, 
       name,
       englishName,
       github,
