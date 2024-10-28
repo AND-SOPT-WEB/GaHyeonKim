@@ -6,6 +6,7 @@ import { deleteMember } from "./delete.js";
 const searchBtn = document.querySelector(".search-btn");
 const resetBtn = document.querySelector(".reset-btn");
 const deleteBtn = document.querySelector(".delete-btn");
+const addBtn = document.querySelector(".add-btn");
 
 // 멤버 데이터 렌더링
 if (!localStorage.getItem("membersData")) {
@@ -43,3 +44,15 @@ deleteBtn.addEventListener("click", () => {
     localStorage.setItem("membersData", JSON.stringify(updatedMembersData));
     renderDatas(updatedMembersData);
 });
+
+// 모달
+// 모달 열고 닫기
+const modalCloseBtn = document.getElementById("modal-close-btn");
+
+addBtn.addEventListener("click", () => {
+    modal.showModal();
+  });
+
+modalCloseBtn.addEventListener("click", () => {
+    modal.close();
+  });
