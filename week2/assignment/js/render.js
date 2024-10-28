@@ -18,7 +18,7 @@ export const renderDatas = (membersData) => {
       tr.setAttribute("id", id);
   
       tr.innerHTML = `
-        <td><input type="checkbox" class="check-item" /></td>
+        <td><input type="checkbox" data-member-id="${id}" /></td>
         <td id="name">${name}</td>
         <td id="englishName">${englishName}</td>
         <td id="github"><a href="https://github.com/${github}" target="_blank">${github}</a></td>
