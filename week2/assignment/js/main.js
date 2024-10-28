@@ -56,3 +56,7 @@ addBtn.addEventListener("click", () => {
 modalCloseBtn.addEventListener("click", () => {
     modal.close();
   });
+
+modal.addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) modal.close();
+  });
