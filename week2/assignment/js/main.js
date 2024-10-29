@@ -3,6 +3,7 @@ import { renderDatas } from "./render.js";
 import { filterDatas, resetDatas } from "./filter.js";
 import { deleteMember } from "./delete.js";
 import { addMember } from "./add.js";
+import { SelectAll } from "./selectAll.js";
 
 const searchBtn = document.querySelector(".search-btn");
 const resetBtn = document.querySelector(".reset-btn");
@@ -53,6 +54,15 @@ const submitAddMember = document.querySelector(".modal-form");
 
 
 addBtn.addEventListener("click", () => {
+    // 모달 필드 초기화
+    document.getElementById("modal-name").value = '';
+    document.getElementById("modal-engName").value = '';
+    document.getElementById("modal-github").value = '';
+    document.getElementById("modal-gender").value = '';
+    document.getElementById("modal-role").value = '';
+    document.getElementById("modal-week1").value = '';
+    document.getElementById("modal-week2").value = '';
+
     modal.showModal();
   });
 
@@ -77,3 +87,8 @@ submitAddMember.addEventListener("submit", (e) => {
       submitAddMember.reset(); // 폼 리셋
     }
   });
+
+// 전체선택
+document.addEventListener("DOMContentLoaded", () => {
+    SelectAll();
+    });
