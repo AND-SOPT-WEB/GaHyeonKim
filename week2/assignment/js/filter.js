@@ -1,3 +1,5 @@
+import { renderDatas } from "./render.js";
+
 const filterDatas = (membersData, filters) => {
     return membersData.filter((member) => {
       const {
@@ -33,7 +35,8 @@ const filterDatas = (membersData, filters) => {
     document.querySelector("#firstWeekGroup").value = "";
     document.querySelector("#secondWeekGroup").value = "";
   
-    window.location.reload();
+    const membersData = JSON.parse(localStorage.getItem("membersData")) || [];
+    renderDatas(membersData)
   };
   
   export { filterDatas, resetDatas };
