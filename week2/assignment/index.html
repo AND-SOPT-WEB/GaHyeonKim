@@ -38,7 +38,6 @@
             <div class="filter one-third">
                 <label for="gender">성별</label>
                 <select id="gender">
-                    <!-- 기본 선택지를 설정할 때 빈 값으로 설정되도록 value=""를 해줘야 한다!!! -->
                     <option disabled hidden selected value="">성별 선택</option>
                     <option value="male">남자</option>
                     <option value="female">여자</option>
@@ -65,16 +64,16 @@
             </div>
             <div class="filter full">
                 <div class="filter-btns">
-                    <button class="reset-btn">초기화</button>
-                    <button class="search-btn">검색</button>
+                    <button class="reset-btn" type="reset">초기화</button>
+                    <button class="search-btn" type="button">검색</button>
                 </div>
             </div>
         </section>
 
         <section class="member-list-container">
             <div class="member-list-btns">
-                <button class="delete-btn">선택삭제</button>
-                <button class="add-btn">추가</button>
+                <button class="delete-btn" type="button">선택삭제</button>
+                <button class="add-btn" type="button">추가</button>
             </div>
             <table>
                 <thead>
@@ -94,7 +93,6 @@
         </section>
     </main>
 
-    <!-- 모달 -->
     <dialog id="modal">
         <div class="modal-wrapper">
             <div class="modal-header">
