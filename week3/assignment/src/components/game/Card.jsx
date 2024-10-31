@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 
-const Card = ({ num, isClicked }) => {
-  return <GameCard isClicked={isClicked}>{num}</GameCard>;
+const Card = ({ num, isClicked, onClick }) => {
+  return (
+    <GameCard isClicked={isClicked} onClick={onClick}>
+      {isClicked ? num : num}
+    </GameCard>
+  );
 };
 
 export default Card;
@@ -17,4 +21,5 @@ const GameCard = styled.div`
   font-size: 1.2rem;
   background-color: ${({ isClicked, theme }) =>
     isClicked ? theme.colors.darkGreen : theme.colors.midGreen};
+  cursor: pointer;
 `;
