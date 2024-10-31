@@ -43,12 +43,14 @@ resetBtn.addEventListener("click", resetDatas);
 deleteBtn.addEventListener("click", () => {
     const storedMembers = JSON.parse(localStorage.getItem("membersData")) || [];
     const updatedMembersData = deleteMember(storedMembers);
+    membersData = updatedMembersData; 
     localStorage.setItem("membersData", JSON.stringify(updatedMembersData));
     renderDatas(updatedMembersData);
 });
 
 // 모달
-// 모달 열기
+// 모달 열고 닫기
+const modalCloseBtn = document.getElementById("modal-close-btn");
 const submitAddMember = document.querySelector(".modal-form");
 
 
@@ -65,6 +67,9 @@ addBtn.addEventListener("click", () => {
     modal.showModal();
   });
 
+modalCloseBtn.addEventListener("click", () => {
+    modal.close();
+  });
 
 modal.addEventListener("click", (e) => {
     if (e.target === e.currentTarget) modal.close();

@@ -38,6 +38,7 @@
             <div class="filter one-third">
                 <label for="gender">성별</label>
                 <select id="gender">
+                    <!-- 기본 선택지를 설정할 때 빈 값으로 설정되도록 value=""를 해줘야 한다!!! -->
                     <option disabled hidden selected value="">성별 선택</option>
                     <option value="male">남자</option>
                     <option value="female">여자</option>
@@ -93,6 +94,7 @@
         </section>
     </main>
 
+    <!-- 모달 -->
     <dialog id="modal">
         <div class="modal-wrapper">
             <div class="modal-header">
@@ -130,11 +132,11 @@
                 </div>
                 <div class="item">
                     <label for="modal-week1">1주차 금잔디조</label>
-                    <input id="modal-week1" type="number" placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
+                    <input id="modal-week1" type="number" min="1" max="9" placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
                 </div>
                 <div class="item">
                     <label for="modal-week2">2주차 금잔디조</label>
-                    <input id="modal-week2" type="number" placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
+                    <input id="modal-week2" type="number" min="1" max="9" placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
                 </div>
                 <button class="add-member-btn" type="submit">추가</button>
             </form>
