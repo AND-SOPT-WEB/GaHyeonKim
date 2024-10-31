@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from '../components/Header';
+import Game from '../components/game/Game';
 
 function Home() {
   const [isGameMode, setIsGameMode] = useState(true);
@@ -7,7 +8,7 @@ function Home() {
   return (
     <>
       <Header isGameMode={isGameMode} setIsGameMode={setIsGameMode} />
-      {isGameMode ? <div>게임</div> : <div>랭킹</div>}
+      {isGameMode ? <Game level={1} /> : <div>랭킹</div>}
     </>
   );
 }
