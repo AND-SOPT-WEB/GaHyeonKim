@@ -1,17 +1,21 @@
 export const SelectAll = () => {
-    const checkboxes = document.querySelectorAll("tbody input[type='checkbox']");
+    const tbody = document.querySelector("tbody");
     const selectAll = document.querySelector("#select-all-btn");
 
     const checkSelectAll = () => {
-        const checked = document.querySelectorAll("tbody input[type='checkbox']:checked");
+        const checkboxes = tbody.querySelectorAll("input[type='checkbox']");
+        const checked = tbody.querySelectorAll("input[type='checkbox']:checked");
         selectAll.checked = checkboxes.length === checked.length;
     };
 
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener("change", checkSelectAll);
+    tbody.addEventListener("change", (event) => {
+        if (event.target.type === "checkbox") {
+            checkSelectAll();
+        }
     });
 
     selectAll.addEventListener("change", () => {
+        const checkboxes = tbody.querySelectorAll("input[type='checkbox']");
         checkboxes.forEach(checkbox => {
             checkbox.checked = selectAll.checked;
         });

@@ -9,6 +9,7 @@ const searchBtn = document.querySelector(".search-btn");
 const resetBtn = document.querySelector(".reset-btn");
 const deleteBtn = document.querySelector(".delete-btn");
 const addBtn = document.querySelector(".add-btn");
+const selectAllCheckbox = document.querySelector("#select-all-btn");
 
 // 멤버 데이터 렌더링
 if (!localStorage.getItem("membersData")) {
@@ -33,7 +34,7 @@ searchBtn.addEventListener("click", () => {
 
   const filteredMembers = filterDatas(membersData, filters);
   renderDatas(filteredMembers);
-
+  selectAllCheckbox.checked = false;
 });
 
 // 초기화
