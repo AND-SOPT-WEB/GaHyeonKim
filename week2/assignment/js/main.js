@@ -43,6 +43,7 @@ resetBtn.addEventListener("click", resetDatas);
 deleteBtn.addEventListener("click", () => {
     const storedMembers = JSON.parse(localStorage.getItem("membersData")) || [];
     const updatedMembersData = deleteMember(storedMembers);
+    membersData = updatedMembersData; 
     localStorage.setItem("membersData", JSON.stringify(updatedMembersData));
     renderDatas(updatedMembersData);
 });
