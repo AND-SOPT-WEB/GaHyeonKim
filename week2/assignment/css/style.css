@@ -1,0 +1,161 @@
+body {
+    background-color: #d5e9ff;
+}
+
+header {
+    background-color: #71b6ff;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    padding: 1.5rem;
+
+    & i {
+        font-size: 1.25rem;
+        justify-self: start;
+    }
+
+    & h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        justify-self: center;
+    }
+
+    & h3 {
+        font-size: 1rem;
+        justify-self: end;
+    }
+}
+
+main {
+    width: 65%;
+    margin: auto;
+}
+
+.filter-container {
+    background-color: #c6e1ff;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.8rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.filter {
+    display: flex;
+
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #71b6ff;
+        width: 8.5rem;
+        height: 4.3rem;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    input,
+    select {
+        padding-left: 0.9rem;
+        flex-grow: 1;
+        font-size: 0.9rem;
+        outline: none;
+        border: none;
+    }
+
+}
+
+.filter.full {
+    grid-column: span 6;
+}
+
+.filter.half {
+    grid-column: span 3;
+}
+
+.filter.one-third {
+    grid-column: span 2;
+}
+
+
+.filter-btns {
+    display: flex;
+    margin-top: 1.5rem;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.reset-btn,
+.search-btn {
+    height: 3.2rem;
+    font-size: 1.1rem;
+    flex: 1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+}
+
+.reset-btn,
+.delete-btn {
+    background-color: #88add4;
+}
+
+.search-btn,
+.add-btn {
+    background-color: #64adfc;
+}
+
+.member-list-container {
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.member-list-btns {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+}
+
+.delete-btn,
+.add-btn {
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+}
+
+table {
+    width: 100%;
+    margin: 0.8rem 0 8rem 0;
+    border: 1px solid #C5C5C5;
+}
+
+thead {
+    background-color: #c6e1ff;
+    font-weight: 700;
+}
+
+th,
+td {
+    height: 3rem;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1rem;
+    border-bottom: 1px solid #C5C5C5;
+    border-right: 1px solid #C5C5C5;
+}
+
+tbody {
+    background-color: white;
+}
+
+td:not(:last-child) {
+    border-right: 1px solid #C5C5C5;
+}
