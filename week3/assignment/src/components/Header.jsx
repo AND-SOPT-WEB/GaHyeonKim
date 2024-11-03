@@ -6,8 +6,18 @@ const Header = ({ isGameMode, setIsGameMode, level, setLevel }) => {
       <section>
         <h1>1 to 50 💨</h1>
         <BtnContainer>
-          <button onClick={() => setIsGameMode(true)}>게임</button>
-          <button onClick={() => setIsGameMode(false)}>랭킹</button>
+          <StyledButton 
+            onClick={() => setIsGameMode(true)} 
+            isActive={isGameMode}
+          >
+            게임
+          </StyledButton>
+          <StyledButton 
+            onClick={() => setIsGameMode(false)} 
+            isActive={!isGameMode}
+          >
+            랭킹
+          </StyledButton>
         </BtnContainer>
       </section>
       {isGameMode && (
@@ -49,23 +59,19 @@ const HeaderContainer = styled.header`
 const BtnContainer = styled.div`
   display: flex;
   gap: 1rem;
+`;
 
-  & button {
-    background-color: ${({ theme }) => theme.colors.darkGreen};
-    border: none;
-    padding: 0.4rem 1rem;
-    font-size: 1.1rem;
-    color: white;
-  }
-
-  & button:focus {
-    background-color: ${({ theme }) => theme.colors.midGreen};
-    border-radius: 6px;
-  }
+const StyledButton = styled.button`
+  background-color: ${({ isActive, theme }) => (isActive ? theme.colors.midGreen : theme.colors.darkGreen)};
+  border: none;
+  padding: 0.4rem 1rem;
+  font-size: 1.1rem;
+  color: white;
+  border-radius: 4px;
 `;
 
 const LevelSelect = styled.select`
-  padding: 0.5rem 1rem;;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
   border: none;
   border-radius: 4px;
