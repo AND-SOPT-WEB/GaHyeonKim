@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 import Game from '../components/Game';
+import Ranking from '../components/Ranking';
 import styled from '@emotion/styled';
 
 function Home() {
@@ -17,13 +18,15 @@ function Home() {
         setLevel={setLevel}
         time={time}
       />
-      {isGameMode && (
+      {isGameMode ? (
         <Game
           level={level}
           setLevel={setLevel}
           time={time}
           setTime={setTime}
         />
+      ) : (
+        <Ranking />
       )}
     </HomeContainer>
   );
