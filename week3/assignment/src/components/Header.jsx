@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import Timer from './Timer';
 
-const Header = ({ isGameMode, setIsGameMode, level, setLevel }) => {
+const Header = ({ isGameMode, setIsGameMode, level, setLevel, time }) => {
   return (
     <HeaderContainer>
       <section>
@@ -27,7 +28,7 @@ const Header = ({ isGameMode, setIsGameMode, level, setLevel }) => {
             <option value={2}>Level 2</option>
             <option value={3}>Level 3</option>
           </LevelSelect>
-          <div>타이머</div>
+          <Timer time={time} />
         </section>
       )}
     </HeaderContainer>

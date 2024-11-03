@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import Header from '../components/Header';
-import Game from '../components/game/Game';
+import Game from '../components/Game';
 
 function Home() {
   const [isGameMode, setIsGameMode] = useState(true);
-  const [level, setLevel] = useState(1); 
+  const [level, setLevel] = useState(1);
   const [time, setTime] = useState(0);
 
   return (
-    <div className="App">
+    <>
       <Header
         isGameMode={isGameMode}
         setIsGameMode={setIsGameMode}
         level={level}
         setLevel={setLevel}
+        time={time}
       />
       {isGameMode && (
         <Game
@@ -23,8 +24,8 @@ function Home() {
           setTime={setTime}
         />
       )}
-    </div>
+    </>
   );
-};
+}
 
 export default Home;

@@ -6,6 +6,7 @@ const Game = ({ level, setLevel, time, setTime }) => {
   const [secondRound, setSecondRound] = useState([]);
   const [nextNum, setNextNum] = useState(1);
   const [isEnd, setIsEnd] = useState(false);
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
 
   const size = level + 2;
   const roundMax = size * size;
@@ -26,14 +27,35 @@ const Game = ({ level, setLevel, time, setTime }) => {
     setSecondRound(secondRoundArr);
     setNextNum(1);
     setIsEnd(false);
+    setTime(0);
+    setIsTimerRunning(false);
   };
+
+  useEffect(() => {
+    resetGame();
+  }, [level]);
+
+  useEffect(() => {
+    let interval;
+    if (isTimerRunning) {
+      interval = setInterval(() => {
+        setTime((prevTime) => prevTime + 0.01);
+      }, 10); // 0.01초 간격으로 업데이트
+    }
+    return () => clearInterval(interval);
+  }, [isTimerRunning]);
 
   const handleNumberClick = (clickedNumber, clickedIndex) => {
     if (clickedNumber === nextNum) {
+      if (nextNum === 1) {
+        setIsTimerRunning(true);
+      }
+
       const maxNum = roundMax * 2;
-  
+
       if (clickedNumber === maxNum) {
-        alert("게임 끝~~");
+        alert(`게임 끝~~\n소요 시간: ${time.toFixed(2)}초`); 
+        setIsTimerRunning(false); 
 
         // alert 닫히고 0.1초 뒤에 resetGame 호출
         // 다른 방법으로 새 게임을 불러오는건 안될까 ?????
@@ -41,21 +63,14 @@ const Game = ({ level, setLevel, time, setTime }) => {
         setIsEnd(true);
       } else {
         setNextNum(clickedNumber + 1);
-  
         const updatedRound = [...firstRound];
         
         // clickedNumber > roundMax => 두 번째 라운드임을 의미
         updatedRound[clickedIndex] = clickedNumber > roundMax ? "" : secondRound[clickedIndex];
-  
         setFirstRound(updatedRound);
       }
     }
   };
-  
-
-  useEffect(() => {
-    resetGame();
-  }, [level]);
 
   return (
     <GameContainer>
@@ -114,6 +129,6 @@ const Empty = styled.div`
 const NextNum = styled.div`
   font-size: 1.2rem;
   font-weight: 500;
-`
+`;
 
 export default Game;
