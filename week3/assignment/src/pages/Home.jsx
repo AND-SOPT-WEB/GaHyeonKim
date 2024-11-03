@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 import Game from '../components/Game';
+import styled from '@emotion/styled';
 
 function Home() {
   const [isGameMode, setIsGameMode] = useState(true);
@@ -8,7 +9,7 @@ function Home() {
   const [time, setTime] = useState(0);
 
   return (
-    <>
+    <HomeContainer>
       <Header
         isGameMode={isGameMode}
         setIsGameMode={setIsGameMode}
@@ -24,8 +25,13 @@ function Home() {
           setTime={setTime}
         />
       )}
-    </>
+    </HomeContainer>
   );
 }
+
+const HomeContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.lightGreen}; 
+  min-height: 100vh;
+`;
 
 export default Home;

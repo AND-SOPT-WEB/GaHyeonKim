@@ -42,7 +42,8 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 4rem;
+  padding: 0 4rem;
+  height: 6.5rem;
 
   & section {
     display: flex;
