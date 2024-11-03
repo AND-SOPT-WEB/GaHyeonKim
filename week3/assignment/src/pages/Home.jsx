@@ -4,7 +4,7 @@ import Game from '../components/game/Game';
 
 function Home() {
   const [isGameMode, setIsGameMode] = useState(true);
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState(1); 
   const [time, setTime] = useState(0);
 
   return (
@@ -12,6 +12,8 @@ function Home() {
       <Header
         isGameMode={isGameMode}
         setIsGameMode={setIsGameMode}
+        level={level}
+        setLevel={setLevel}
       />
       {isGameMode && (
         <Game

@@ -1,18 +1,22 @@
 import styled from '@emotion/styled';
 
-const Header = ({ isGameMode, setIsGameMode }) => {
+const Header = ({ isGameMode, setIsGameMode, level, setLevel }) => {
   return (
     <HeaderContainer>
       <section>
         <h1>1 to 50 💨</h1>
         <BtnContainer>
-            <button onClick={() => setIsGameMode(true)}>게임</button>
-            <button onClick={() => setIsGameMode(false)}>랭킹</button>
+          <button onClick={() => setIsGameMode(true)}>게임</button>
+          <button onClick={() => setIsGameMode(false)}>랭킹</button>
         </BtnContainer>
       </section>
       {isGameMode && (
         <section>
-          <div>레벨 고르기</div>
+          <LevelSelect value={level} onChange={(e) => setLevel(parseInt(e.target.value, 10))}>
+            <option value={1}>Level 1</option>
+            <option value={2}>Level 2</option>
+            <option value={3}>Level 3</option>
+          </LevelSelect>
           <div>타이머</div>
         </section>
       )}
@@ -58,4 +62,11 @@ const BtnContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.midGreen};
     border-radius: 6px;
   }
+`;
+
+const LevelSelect = styled.select`
+  padding: 0.5rem 1rem;;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
 `;
