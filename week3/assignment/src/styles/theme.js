@@ -7,5 +7,5 @@ const colors = {
     };
 
 export const Theme = {
-    colors
+    colors,
 };

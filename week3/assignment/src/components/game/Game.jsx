@@ -1,92 +1,119 @@
-import styled from '@emotion/styled';
-import Card from './Card';
-import { useState, useEffect } from 'react';
+import styled from "@emotion/styled";
+import { useState, useEffect } from "react";
 
-const Game = ({ level }) => {
-  const gridSize = parseInt(level) + 2;
-  const CardNum = gridSize * gridSize; 
-  const totalCardNum = 2 * gridSize;
-  const [cards, setCards] = useState([]);
-  const [nextNumber, setNextNumber] = useState(1);
-  const [usedNumbers, setUsedNumbers] = useState([]); // 이미 사용된 숫자 저장
+const Game = ({ level, setLevel, time, setTime }) => {
+  const [firstRound, setFirstRound] = useState([]);
+  const [secondRound, setSecondRound] = useState([]);
+  const [nextNum, setNextNum] = useState(1);
+  const [isEnd, setIsEnd] = useState(false);
 
-  const shuffledCards = () => {
-    const NumsArr = new Set();
-    
-    while (NumsArr.size < CardNum) {
-      NumsArr.add(Math.floor(Math.random() * CardNum) + 1);
+  const size = level + 2;
+  const roundMax = size * size;
+
+  const getRandomArray = (min, max, length) => {
+    const arr = new Set();
+    while (arr.size < length) {
+      arr.add(Math.floor(Math.random() * (max - min + 1)) + min);
     }
-
-    const Nums = Array.from(NumsArr);
-    const tempArr = Nums.map((num) => ({ num, isClicked: false }));
-    setCards(tempArr);
+    return Array.from(arr);
   };
 
+  const resetGame = () => {
+    const firstNumArr = getRandomArray(1, roundMax, roundMax);
+    const secondRoundArr = getRandomArray(roundMax + 1, roundMax * 2, roundMax);
 
-  const handleCardClick = (clickedNum) => {
-    // 현재 클릭된 숫자가 nextNumber와 일치하면
-    if (clickedNum === nextNumber) {
-      setCards((prevCards) =>
-        prevCards.map((card) =>
-          card.num === clickedNum ? { ...card, isClicked: true } : card
-        )
-      );
+    setFirstRound(firstNumArr);
+    setSecondRound(secondRoundArr);
+    setNextNum(1);
+    setIsEnd(false);
+  };
 
+  const handleNumberClick = (clickedNumber, clickedIndex) => {
+    if (clickedNumber === nextNum) {
+      const maxNum = roundMax * 2;
+  
+      if (clickedNumber === maxNum) {
+        alert("게임 끝~~");
 
-      setUsedNumbers((prev) => [...prev, clickedNum]); // 사용된 숫자 추가
-      setNextNumber((prev) => prev + 1); // 다음 숫자로 증가
-
-      // 랜덤 숫자 생성 (clickedNum에 따라서)
-      const availableNumbers = Array.from({ length: CardNum }, (_, i) => i + 1)
-        .filter(num => !usedNumbers.includes(num) && num > CardNum);
-      
-      console.log('availableNumbers : ', availableNumbers);
-      if (availableNumbers.length > 0) {
-        const randomNum = availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
-        console.log(randomNum); 
-        setNextNumber(randomNum);
+        // alert 닫히고 0.1초 뒤에 resetGame 호출
+        // 다른 방법으로 새 게임을 불러오는건 안될까 ?????
+        setTimeout(resetGame, 100);
+        setIsEnd(true);
+      } else {
+        setNextNum(clickedNumber + 1);
+  
+        const updatedRound = [...firstRound];
+        
+        // clickedNumber > roundMax => 두 번째 라운드임을 의미
+        updatedRound[clickedIndex] = clickedNumber > roundMax ? "" : secondRound[clickedIndex];
+  
+        setFirstRound(updatedRound);
       }
-
-    } else {
-      console.log('잘못된 숫자 클릭함');
     }
   };
+  
 
   useEffect(() => {
-    shuffledCards();
-  }, []);
+    resetGame();
+  }, [level]);
 
   return (
     <GameContainer>
-      <h1>다음 숫자 : {nextNumber}</h1>
-      <GameGrid columns={gridSize}>
-        {cards.map((card) => (
-          <Card 
-            key={`card-${card.num}`} 
-            num={card.num} 
-            isClicked={card.isClicked} 
-            onClick={() => handleCardClick(card.num)}
-          />
+      <NextNum>다음 숫자: {nextNum}</NextNum>
+      <GridContainer size={size}>
+        {firstRound.map((num, index) => (
+          num === "" ? (
+            <Empty key={index} />
+          ) : (
+            <NumberButton
+              key={index}
+              onClick={() => handleNumberClick(num, index)}
+            >
+              {num}
+            </NumberButton>
+          )
         ))}
-      </GameGrid>
+      </GridContainer>
     </GameContainer>
   );
 };
-
-export default Game;
 
 const GameContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 65%;
-  margin: 0 auto;      
-  margin-top: 5rem;
+  padding-top: 5rem;
 `;
 
-const GameGrid = styled.div`
+const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: ${({ columns }) => `repeat(${columns}, 1fr)`};
+  grid-template-columns: repeat(${(props) => props.size}, 1fr);
   gap: 0.5rem;
-  margin-top: 2.5rem;
+  margin-top: 2.2rem;
 `;
+
+const NumberButton = styled.button`
+  width: 5rem;
+  height: 5rem;
+  background-color: ${({ theme }) => theme.colors.midGreen};
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  &:active {
+    opacity: 0.6;
+  }
+`;
+
+const Empty = styled.div`
+  width: 5rem;
+  height: 5rem;
+`;
+
+const NextNum = styled.div`
+  font-size: 1.2rem;
+  font-weight: 500;
+`
+
+export default Game;

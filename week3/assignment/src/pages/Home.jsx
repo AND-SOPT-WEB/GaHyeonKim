@@ -4,13 +4,25 @@ import Game from '../components/game/Game';
 
 function Home() {
   const [isGameMode, setIsGameMode] = useState(true);
-  
+  const [level, setLevel] = useState(1);
+  const [time, setTime] = useState(0);
+
   return (
-    <>
-      <Header isGameMode={isGameMode} setIsGameMode={setIsGameMode} />
-      {isGameMode ? <Game level={1} /> : <div>랭킹</div>}
-    </>
+    <div className="App">
+      <Header
+        isGameMode={isGameMode}
+        setIsGameMode={setIsGameMode}
+      />
+      {isGameMode && (
+        <Game
+          level={level}
+          setLevel={setLevel}
+          time={time}
+          setTime={setTime}
+        />
+      )}
+    </div>
   );
-}
+};
 
 export default Home;
