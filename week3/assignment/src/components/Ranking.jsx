@@ -6,7 +6,14 @@ const Ranking = () => {
 
   useEffect(() => {
     const storedRecords = JSON.parse(localStorage.getItem('gameRecords')) || [];
-    setRecords(storedRecords);
+   
+    const sortedRecords = storedRecords.sort((a, b) => {
+      if (b.level === a.level) {
+        return a.playTime - b.playTime;
+      }
+      return b.level - a.level;
+    });
+    setRecords(sortedRecords);
   }, []);
 
   const resetRanking = () => {
