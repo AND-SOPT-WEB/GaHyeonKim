@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useState, useEffect } from "react";
+import Modal from './Modal';
 
 const Game = ({ level, setLevel, time, setTime }) => {
   const [firstRound, setFirstRound] = useState([]);
@@ -54,8 +55,8 @@ const Game = ({ level, setLevel, time, setTime }) => {
       const maxNum = roundMax * 2;
 
       if (clickedNumber === maxNum) {
-        alert(`게임 끝~~\n소요 시간: ${time.toFixed(2)}초`); 
-        setIsTimerRunning(false); 
+        setIsTimerRunning(false);
+        setIsEnd(true);
 
         // 정보 저장
         const currentTime = new Date().toLocaleString();
@@ -68,15 +69,10 @@ const Game = ({ level, setLevel, time, setTime }) => {
         const records = JSON.parse(localStorage.getItem("gameRecords")) || [];
         records.push(newRecord);
         localStorage.setItem("gameRecords", JSON.stringify(records));
-
-        // alert 닫히고 0.1초 뒤에 resetGame 호출
-        // 다른 방법으로 새 게임을 불러오는건 안될까 ?????
-        setTimeout(resetGame, 100);
-        setIsEnd(true);
       } else {
         setNextNum(clickedNumber + 1);
         const updatedRound = [...firstRound];
-
+        
         // clickedNumber > roundMax => 두 번째 라운드임을 의미
         updatedRound[clickedIndex] = clickedNumber > roundMax ? "" : secondRound[clickedIndex];
         setFirstRound(updatedRound);
@@ -101,6 +97,7 @@ const Game = ({ level, setLevel, time, setTime }) => {
           )
         ))}
       </GridContainer>
+      {isEnd && <Modal level={level} time={time} onClose={resetGame} />}
     </GameContainer>
   );
 };
