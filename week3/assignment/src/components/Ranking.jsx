@@ -9,9 +9,17 @@ const Ranking = () => {
     setRecords(storedRecords);
   }, []);
 
+  const resetRanking = () => {
+    localStorage.removeItem('gameRecords');
+    setRecords([]);
+  };
+
   return (
     <RankingContainer>
-      <h1>랭킹</h1>
+      <RankingHeader>
+        <h1>랭킹</h1>
+        <button onClick={resetRanking}>초기화</button>
+      </RankingHeader>
       <Table>
         <thead>
           <tr>
@@ -25,7 +33,7 @@ const Ranking = () => {
             <tr key={index}>
               <td>{record.currentTime}</td>
               <td>Level {record.level}</td>
-              <td>{record.playTime} 초</td>
+              <td>{record.playTime}초</td>
             </tr>
           ))}
         </tbody>
@@ -46,10 +54,29 @@ const RankingContainer = styled.div`
   padding: 3rem;
   border-radius: 6px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+`;
 
-  & h1 {
+const RankingHeader = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  align-items: center;
+
+  h1 {
     font-size: 2rem;
     font-weight: 700;
+    grid-column: 2;
+    justify-self: center;
+  }
+
+  button {
+    background-color: #E5E5E5;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    grid-column: 3;
+    justify-self: end;
   }
 `;
 

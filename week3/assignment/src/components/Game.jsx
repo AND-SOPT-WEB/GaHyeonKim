@@ -60,16 +60,14 @@ const Game = ({ level, setLevel, time, setTime }) => {
         // 정보 저장
         const currentTime = new Date().toLocaleString();
         const newRecord = {
-        currentTime: currentTime,
-        level: level,
-        playTime: time.toFixed(2),
+          currentTime: currentTime,
+          level: level,
+          playTime: time.toFixed(2),
         };
 
         const records = JSON.parse(localStorage.getItem("gameRecords")) || [];
         records.push(newRecord);
         localStorage.setItem("gameRecords", JSON.stringify(records));
-
-
 
         // alert 닫히고 0.1초 뒤에 resetGame 호출
         // 다른 방법으로 새 게임을 불러오는건 안될까 ?????
