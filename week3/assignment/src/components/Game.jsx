@@ -51,13 +51,13 @@ const Game = ({ level, setLevel, time, setTime }) => {
       if (nextNum === 1) {
         setIsTimerRunning(true);
       }
-
+  
       const maxNum = roundMax * 2;
-
+  
       if (clickedNumber === maxNum) {
         setIsTimerRunning(false);
         setIsEnd(true);
-
+  
         // 정보 저장
         const currentTime = new Date().toLocaleString();
         const newRecord = {
@@ -65,20 +65,26 @@ const Game = ({ level, setLevel, time, setTime }) => {
           level: level,
           playTime: time.toFixed(2),
         };
-
+  
         const records = JSON.parse(localStorage.getItem("gameRecords")) || [];
         records.push(newRecord);
         localStorage.setItem("gameRecords", JSON.stringify(records));
       } else {
         setNextNum(clickedNumber + 1);
-        const updatedRound = [...firstRound];
-        
-        // clickedNumber > roundMax => 두 번째 라운드임을 의미
-        updatedRound[clickedIndex] = clickedNumber > roundMax ? "" : secondRound[clickedIndex];
-        setFirstRound(updatedRound);
+  
+        setFirstRound((prevRound) =>
+          prevRound.map((num, index) => {
+            // 클릭된 인덱스에 해당하는 숫자만 교체
+            if (index === clickedIndex) {
+              return clickedNumber > roundMax ? "" : secondRound[clickedIndex];
+            }
+            return num;
+          })
+        );
       }
     }
   };
+
 
   return (
     <GameContainer>
