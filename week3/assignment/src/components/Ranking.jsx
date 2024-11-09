@@ -4,15 +4,21 @@ import styled from '@emotion/styled';
 const Ranking = () => {
   const [records, setRecords] = useState([]);
 
-  useEffect(() => {
+  const fetchGameRecords = () => {
     const storedRecords = JSON.parse(localStorage.getItem('gameRecords')) || [];
-   
+    
     const sortedRecords = storedRecords.sort((a, b) => {
       if (b.level === a.level) {
         return a.playTime - b.playTime;
       }
       return b.level - a.level;
     });
+    
+    return sortedRecords;
+  };
+
+  useEffect(() => {
+    const sortedRecords = fetchGameRecords();
     setRecords(sortedRecords);
   }, []);
 
