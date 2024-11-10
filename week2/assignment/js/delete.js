@@ -7,5 +7,8 @@ export const deleteMember = (membersData) => {
         return membersData; 
     }
 
+    const selectAllCheckbox = document.querySelector("#select-all-btn");
+    selectAllCheckbox.checked = false; 
+
     return membersData.filter(member => !selectedIds.includes(member.id));
 };

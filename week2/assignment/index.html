@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -65,16 +65,16 @@
             </div>
             <div class="filter full">
                 <div class="filter-btns">
-                    <button class="reset-btn">초기화</button>
-                    <button class="search-btn">검색</button>
+                    <button class="reset-btn" type="reset">초기화</button>
+                    <button class="search-btn" type="button">검색</button>
                 </div>
             </div>
         </section>
 
         <section class="member-list-container">
             <div class="member-list-btns">
-                <button class="delete-btn">선택삭제</button>
-                <button class="add-btn">추가</button>
+                <button class="delete-btn" type="button">선택삭제</button>
+                <button class="add-btn" type="button">추가</button>
             </div>
             <table>
                 <thead>
@@ -132,11 +132,11 @@
                 </div>
                 <div class="item">
                     <label for="modal-week1">1주차 금잔디조</label>
-                    <input id="modal-week1" type="number" placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
+                    <input id="modal-week1" type="number" min="1" max="9" placeholder="1주차 금잔디조를 입력하세요 (1~9)" />
                 </div>
                 <div class="item">
                     <label for="modal-week2">2주차 금잔디조</label>
-                    <input id="modal-week2" type="number" placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
+                    <input id="modal-week2" type="number" min="1" max="9" placeholder="2주차 금잔디조를 입력하세요 (1~9)" />
                 </div>
                 <button class="add-member-btn" type="submit">추가</button>
             </form>
