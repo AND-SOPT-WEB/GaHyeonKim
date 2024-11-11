@@ -47,7 +47,7 @@ const Login = () => {
           errorMessage="비밀번호를 입력해 주세요."
           onChange={handleChange}
         />
-        <Button type="submit"> 로그인 </Button>
+        <Button type="submit">로그인</Button>
         <SignUpLink href="/signup">회원가입</SignUpLink>
       </LoginForm>
     </LoginContainer>
@@ -73,7 +73,6 @@ const LoginForm = styled.form`
 `;
 
 const Title = styled.h2`
-  color: ${Theme.colors.darkGreen};
   font-weight: 700;
   font-size: 1.5rem;
   text-align: center;

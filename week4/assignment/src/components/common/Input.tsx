@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 import styled from "@emotion/styled";
-import { Theme } from "../styles/theme";
+import { Theme } from "../../styles/theme";
 
 export interface InputProps extends HTMLAttributes<HTMLInputElement> {
   type: string;
@@ -58,6 +58,8 @@ const InputLayout = styled.div`
 
 const ErrorMessage = styled.div`
   color: ${Theme.colors.error};
+  font-size: 0.87rem;
+  padding-left: 0.2rem;
 `;
 
 const StyledInput = styled.input`
