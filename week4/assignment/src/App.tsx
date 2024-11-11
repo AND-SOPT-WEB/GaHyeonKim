@@ -4,8 +4,8 @@ import { Theme } from './styles/theme.ts'
 import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom'
 import Layout from './pages/layout/Layout.tsx'
 import Login from './pages/login/Login.tsx'
-import SignUp from './pages/signup/SignUp.tsx'
 import MyPage from './pages/mypage/MyPage.tsx'
+import SignUpPage from './pages/signup/SignUpPage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -13,8 +13,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true, // 기본 경로를 설정
-        element: <Navigate to="/login" replace />,
+        index: true,
+        element: <Navigate to="/login" replace />, // / 로 접근 시 /login으로 리다이렉트
       },
       {
         path: "login",
@@ -22,7 +22,11 @@ const router = createBrowserRouter([
       },
       {
         path: "signup",
-        element: <SignUp />,
+        element: <Navigate to="/signup/1" replace />, // /signup으로 접근 시 /signup/1로 리다이렉트
+      },
+      {
+        path: "signup/:step",
+        element: <SignUpPage />,
       },
       {
         path: "mypage",
