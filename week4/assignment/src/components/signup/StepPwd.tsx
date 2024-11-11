@@ -2,22 +2,25 @@ import React, { useState } from 'react';
 import Input from '../common/Input';
 import styled from '@emotion/styled';
 import Button from '../common/Button';
+import { useSignUpContext } from '../../context/SignUpContext';
 
 const StepPwd = ({ onNext }: { onNext: () => void }) => {
-  const [password, setPassword] = useState('');
+  const { handlePwd } = useSignUpContext();
+  const [pwd, setPwd] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isValid, setIsValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleNext = () => {
-    if (password && confirmPassword && isValid) {
+    if (pwd && confirmPassword && isValid) {
+      handlePwd(pwd);
       onNext();
     }
   };
 
   const handlePwdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setPassword(value);
+    setPwd(value);
 
     if (value.length > 8) {
       setIsValid(false);
@@ -35,10 +38,10 @@ const StepPwd = ({ onNext }: { onNext: () => void }) => {
     const value = e.target.value;
     setConfirmPassword(value);
 
-    if (value !== password) {
+    if (value !== pwd) {
       setIsValid(false);
       setErrorMessage('비밀번호가 일치하지 않습니다.');
-    } else if (password.length > 8) {
+    } else if (pwd.length > 8) {
       setIsValid(false);
       setErrorMessage('비밀번호는 8자 이하로 입력해주세요.');
     } else {
@@ -53,8 +56,8 @@ const StepPwd = ({ onNext }: { onNext: () => void }) => {
       <InputContainer>
       <Input
         type="password"
-        value={password}
-        name="password"
+        value={pwd}
+        name="pwd"
         placeholder="비밀번호를 입력해주세요"
         onChange={handlePwdChange}
         isValid={isValid}
@@ -72,7 +75,7 @@ const StepPwd = ({ onNext }: { onNext: () => void }) => {
       <Button
         type="button"
         onClick={handleNext}
-        disabled={!password || !confirmPassword || !isValid || password.length > 8 || confirmPassword.length > 8}
+        disabled={!pwd || !confirmPassword || !isValid || pwd.length > 8 || confirmPassword.length > 8}
       >
         다음
       </Button>

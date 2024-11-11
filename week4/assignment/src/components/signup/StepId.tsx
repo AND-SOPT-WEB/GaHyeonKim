@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import Input from '../common/Input';
 import styled from '@emotion/styled';
 import Button from '../common/Button';
+import { useSignUpContext } from '../../context/SignUpContext';
 
 const StepId = ({ onNext }: { onNext: () => void }) => {
+  const { handleId } = useSignUpContext();
   const [name, setName] = useState('');
   const [isValid, setIsValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleNext = () => {
     if (name && isValid) {
+      handleId(name);
       onNext();
     }
   };
