@@ -1,12 +1,13 @@
-import { useState } from "react";
-import styled from "@emotion/styled";
-import Input from "../../components/Input";
-import { Theme } from "../../styles/theme";
+import { useState } from 'react';
+import styled from '@emotion/styled';
+import Input from '../../components/common/Input';
+import { Theme } from '../../styles/theme';
+import Button from '../../components/common/Button';
 
 const Login = () => {
-  const [loginData, setloginData] = useState({
-    id: "",
-    password: "",
+  const [loginData, setLoginData] = useState({
+    id: '',
+    password: '',
   });
 
   const [isValid, setIsValid] = useState({
@@ -16,12 +17,11 @@ const Login = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setloginData((prevData) => ({ ...prevData, [name]: value }));
+    setLoginData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     alert(`아이디: ${loginData.id}\n비밀번호: ${loginData.password}`);
   };
 
@@ -47,7 +47,7 @@ const Login = () => {
           errorMessage="비밀번호를 입력해 주세요."
           onChange={handleChange}
         />
-        <LoginButton type="submit">로그인</LoginButton>
+        <Button type="submit"> 로그인 </Button>
         <SignUpLink href="/signup">회원가입</SignUpLink>
       </LoginForm>
     </LoginContainer>
@@ -55,7 +55,6 @@ const Login = () => {
 };
 
 export default Login;
-
 
 const LoginContainer = styled.div`
   display: flex;
@@ -79,23 +78,6 @@ const Title = styled.h2`
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 2rem;
-`;
-
-const LoginButton = styled.button`
-  width: 100%;
-  height: 54px;
-  padding: 0.4rem 1.1rem;
-  border: none;
-  border-radius: 4px;
-  background-color: ${Theme.colors.primary};
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${Theme.colors.primaryDark};
-  }
 `;
 
 const SignUpLink = styled.a`
