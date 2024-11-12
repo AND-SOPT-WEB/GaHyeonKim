@@ -2,6 +2,9 @@ import { HTMLAttributes } from "react";
 import styled from "@emotion/styled";
 import { Theme } from "../../styles/theme";
 import { useState } from "react";
+import OpenEye from "../../assets/OpenEye.svg?react"
+import CloseEye from "../../assets/CloseEye.svg?react"
+
 
 export interface InputProps extends HTMLAttributes<HTMLInputElement> {
   type: string;
@@ -46,7 +49,7 @@ const Input = ({
           />
           {showPwd && (
             <ShowPwdButton onClick={togglePwdVisibility}>
-              {inputType === "text" ? "Hide" : "Show"}
+              {inputType === "text" ? <OpenEye /> : <CloseEye />}
             </ShowPwdButton>
           )}
         </InputWrapper>
