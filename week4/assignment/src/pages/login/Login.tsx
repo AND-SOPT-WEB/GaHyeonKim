@@ -83,7 +83,6 @@ const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: ${Theme.colors.background};
 `;
 
 const LoginForm = styled.form`

@@ -49,7 +49,6 @@ const SignUpContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: ${Theme.colors.background};
 
   & p {
     margin-top: 1rem;
