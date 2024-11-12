@@ -1,9 +1,17 @@
+import { useState } from 'react';
+import Header from '../../components/mypage/Header';
+import HobbyTab from '../../components/mypage/HobbyTab';
+import MyInfoTab from '../../components/mypage/MyInfoTab';
+
 const MyPage = () => {
-    return (
-      <>
-        <div>마이 페이지다</div>
-      </>
-    )
-  }
-  
-  export default MyPage;
+  const [isHobbyTab, setIsHobbyTab] = useState(true);
+
+  return (
+    <div>
+      <Header setIsHobbyTab={setIsHobbyTab} />
+      {isHobbyTab ? <HobbyTab /> : <MyInfoTab />}
+    </div>
+  );
+};
+
+export default MyPage;
