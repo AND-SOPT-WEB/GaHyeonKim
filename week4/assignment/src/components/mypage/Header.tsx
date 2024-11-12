@@ -34,7 +34,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: ${Theme.colors.primaryDark};
+  background-color: ${Theme.colors.brown};
   color: white;
 `;
 
@@ -57,7 +57,7 @@ const MenuItem = styled.div`
 `;
 
 const LogoutButton = styled.button`
-  background: ${Theme.colors.primary};
+  background: ${Theme.colors.primaryDark};
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
