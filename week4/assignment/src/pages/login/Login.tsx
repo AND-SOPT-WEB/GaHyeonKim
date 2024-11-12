@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import Input from '../../components/common/Input';
 import { Theme } from '../../styles/theme';
 import Button from '../../components/common/Button';
+import { postLogin } from '../../apis/postLogin';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -15,14 +17,34 @@ const Login = () => {
     password: true,
   });
 
+  const { postUserLogin } = postLogin();
+  const navigate = useNavigate();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLoginData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`아이디: ${loginData.id}\n비밀번호: ${loginData.password}`);
+
+    try {
+      const token = await postUserLogin({
+        username: loginData.id,
+        password: loginData.password,
+      });
+
+      if (token) {
+        localStorage.setItem('authToken', token);
+        navigate('/mypage');
+      }
+    } catch (err: any) {
+      if (err.response?.status === 403) {
+        alert('잘못된 비밀번호입니다.');
+      } else {
+        alert('요청 중 오류가 발생했습니다.');
+      }
+    }
   };
 
   return (
