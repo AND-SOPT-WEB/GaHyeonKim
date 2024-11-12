@@ -29,6 +29,7 @@ const StyledButton = styled.button`
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease, cursor 0.3s ease;
 
   &:hover {
     background-color: ${Theme.colors.primaryDark};
