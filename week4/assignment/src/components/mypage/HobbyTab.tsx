@@ -119,7 +119,7 @@ const SearchHobbySection = styled.section`
   }
 
   & button {
-    margin-top: 0.4rem;
+    margin-top: 0.6rem;
   }
 
   & p {
