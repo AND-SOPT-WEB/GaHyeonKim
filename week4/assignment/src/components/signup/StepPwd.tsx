@@ -61,6 +61,7 @@ const StepPwd = ({ onNext }: { onNext: () => void }) => {
         placeholder="비밀번호를 입력해주세요"
         onChange={handlePwdChange}
         isValid={isValid}
+        showPwd={true}
       />
       <Input
         type="password"
